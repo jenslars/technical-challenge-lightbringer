@@ -1,0 +1,75 @@
+@import "tailwindcss";
+
+:root {
+  --background: #F9FAFB;
+  --surface: #FFFFFF;
+  --foreground: #020617;
+  --bg-gray-200: #f3f4f6;
+  --bg-gray-300: #e5e7eb;
+  --bg-gray-400: #d1d5db;
+  /* Tag color variables */
+  --bg-purple-200: #E9D5FF;
+  --bg-purple-800: #7C3AED;
+  --bg-pink-200: #FBCFE8;
+  --bg-pink-800: #9D174D;
+  --bg-lime-200: #D9F99D;
+  --bg-lime-800: #365314;
+  --bg-blue-200: #BFDBFE;
+  --bg-blue-800: #1E40AF;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-surface: var(--surface);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-inter), system-ui, sans-serif;
+  --font-mono: var(--font-inter), monospace;
+  --screens-mobile: 430px;
+
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+
+* {
+  font-family: var(--font-inter), system-ui, sans-serif;
+}
+
+h1 {
+  color: #030712;
+  font-weight: 400;
+  font-size: 36px;
+}
+
+h2 {
+  color: #020617;
+  font-weight: 600;
+  font-size: 24px;
+}
+
+h3 {
+  color: #020617;
+  font-weight: 600;
+  font-size: 20px;
+}
+
+.testButton {
+  background-color: var(--bg-gray-50);
+  border-radius: 24px;
+  padding: 2px 3.5px 2px 3.5px;
+  gap: 1.5px;
+  transition-duration: 0.3s;
+  cursor: pointer;
+}
+
+.testButton:hover {  
+  background-color: var(--bg-gray-100);
+}
+
+.testButton:active {
+  background-color: var(--bg-gray-400);
+}
