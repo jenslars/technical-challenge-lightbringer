@@ -35,7 +35,6 @@ export interface SearchFilters {
   query: string;
   category: FilterCategory;
   page: number;
-  limit: number;
 }
 
 // Pagination types

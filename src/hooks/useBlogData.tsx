@@ -25,7 +25,7 @@ export const BlogDataProvider = ({ children }: { children: ReactNode }) => {
   const { posts: allPosts, loading, error, refetch } = useBlogPosts();
   
   // Filtering
-  const { filters, setFilters, filteredPosts, setSearchQuery: setSearchQueryInternal, setCategory: setCategoryInternal } = useBlogFilters(allPosts);
+  const { filters, filteredPosts, setSearchQuery: setSearchQueryInternal, setCategory: setCategoryInternal } = useBlogFilters(allPosts);
   
   // Pagination
   const { paginatedPosts, paginationInfo, setCurrentPage } = useBlogPagination(filteredPosts);

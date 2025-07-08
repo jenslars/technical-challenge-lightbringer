@@ -7,17 +7,16 @@ interface UseBlogPaginationReturn {
   paginatedPosts: BlogPost[];
   paginationInfo: PaginationInfo;
   setCurrentPage: (page: number) => void;
-  currentPage: number;
 }
 
 export const useBlogPagination = (filteredPosts: BlogPost[]): UseBlogPaginationReturn => {
   const [currentPage, setCurrentPage] = useState(1);
 
-  // Calculate posts per page based on current page
-  const postsPerPage = currentPage === 1 ? 7 : 9;
+  // Always use 7 posts per page
+  const postsPerPage = 7;
   
   // Calculate start and end indices for pagination
-  const startIndex = currentPage === 1 ? 0 : 7 + (currentPage - 2) * 9;
+  const startIndex = (currentPage - 1) * postsPerPage;
   const endIndex = startIndex + postsPerPage;
 
   // Memoized paginated posts for better performance
@@ -28,13 +27,7 @@ export const useBlogPagination = (filteredPosts: BlogPost[]): UseBlogPaginationR
 
   // Memoized pagination info
   const paginationInfo = useMemo(() => {
-    const calculateTotalPages = (totalPosts: number): number => {
-      if (totalPosts <= 7) return 1;
-      const remainingPosts = totalPosts - 7;
-      return 1 + Math.ceil(remainingPosts / 9);
-    };
-
-    const totalPages = calculateTotalPages(filteredPosts.length);
+    const totalPages = Math.ceil(filteredPosts.length / postsPerPage);
     const hasNextPage = currentPage < totalPages;
     const hasPrevPage = currentPage > 1;
 
@@ -55,7 +48,6 @@ export const useBlogPagination = (filteredPosts: BlogPost[]): UseBlogPaginationR
   return {
     paginatedPosts,
     paginationInfo,
-    setCurrentPage: handleSetCurrentPage,
-    currentPage
+    setCurrentPage: handleSetCurrentPage
   };
-}; 
+};

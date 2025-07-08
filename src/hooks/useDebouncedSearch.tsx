@@ -4,7 +4,6 @@ import { SEARCH_CONFIG } from '../constants';
 
 interface UseDebouncedSearchReturn {
   searchQuery: string;
-  debouncedQuery: string;
   setSearchQuery: (query: string) => void;
   isSearching: boolean;
 }
@@ -44,7 +43,6 @@ export const useDebouncedSearch = (
 
   return {
     searchQuery,
-    debouncedQuery,
     setSearchQuery: handleSearchQueryChange,
     isSearching
   };

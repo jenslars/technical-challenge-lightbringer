@@ -6,7 +6,6 @@ import { SearchHelper } from '../services/blogService';
 
 interface UseBlogFiltersReturn {
   filters: SearchFilters;
-  setFilters: React.Dispatch<React.SetStateAction<SearchFilters>>;
   filteredPosts: BlogPost[];
   setSearchQuery: (query: string) => void;
   setCategory: (category: FilterCategory) => void;
@@ -16,8 +15,7 @@ export const useBlogFilters = (posts: BlogPost[]): UseBlogFiltersReturn => {
   const [filters, setFilters] = useState<SearchFilters>({
     query: '',
     category: 'All',
-    page: 1,
-    limit: 12
+    page: 1
   });
 
   // Memoized filtering logic for better performance
@@ -55,7 +53,6 @@ export const useBlogFilters = (posts: BlogPost[]): UseBlogFiltersReturn => {
 
   return {
     filters,
-    setFilters,
     filteredPosts,
     setSearchQuery,
     setCategory
