@@ -1,5 +1,5 @@
 import { BlogPost } from '@/types/api';
-import Tag from '@/components/Tag/Tag';
+import Tag from '@/components/pages/BlogPage/BlogCard/Tag/Tag';
 import BlogCardMeta from './BlogCardMeta';
 
 interface BlogCardProps {
